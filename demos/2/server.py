@@ -7,7 +7,8 @@ def receive_post():
     if "file" in request.files:
         file = request.files["file"]
         content = file.read().decode("utf-8")
-        print(f"Received file content:\n{content}")
+        # print file name
+        print(f"Received file - {file.filename}:\n{content}")
     else:
         print(f"Received raw data: {request.data.decode('utf-8')}")
 
