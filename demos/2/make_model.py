@@ -6,3 +6,6 @@ def make_simple_model():
     # A simple linear model
     model = nn.Linear(2, 1)
     torch.save(model, "simple_model.pth")
+
+if __name__ == "__main__":
+    make_simple_model()
