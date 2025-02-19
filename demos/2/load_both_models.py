@@ -8,10 +8,10 @@ def load_models():
     print("Original Model:")
     print(model)
 
-    # Load the malicious model (this will trigger the exec call)
-    malicious_model = torch.load("bad_model.pth")
-    print("Malicious Model:")
-    print(malicious_model)
+    # Load the infected model (this will trigger the system call)
+    infected_model = torch.load("infected_model.pth")
+    print("infected Model:")
+    print(infected_model)
 
 if __name__ == "__main__":
     load_models()

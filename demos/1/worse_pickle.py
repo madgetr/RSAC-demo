@@ -6,7 +6,7 @@ class Malicious(dict):
         super().__init__(**kwargs)
 
     def __reduce__(self):
-        return os.system, (f"ls or dict()",), None, None, iter(self.items())
+        return eval, (f"exec(\"print('This pickle executes code but and still returns the dict')\") or dict()",), None, None, iter(self.items())
 
 
 student = Malicious(**{
