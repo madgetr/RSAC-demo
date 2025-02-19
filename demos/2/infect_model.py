@@ -1,5 +1,4 @@
 import os
-from simple_model import SimpleModel
 import torch
 
 

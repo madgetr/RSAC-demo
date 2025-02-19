@@ -1,12 +1,14 @@
 import pickle
-import os
+
 
 class Malicious(dict):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def __reduce__(self):
-        return eval, (f"exec(\"print('This pickle executes code but and still returns the dict')\") or dict()",), None, None, iter(self.items())
+        return eval, (
+        f"exec(\"print('This pickle executes code but and still returns the dict')\") or dict()",), None, None, iter(
+            self.items())
 
 
 student = Malicious(**{

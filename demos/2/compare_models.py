@@ -1,5 +1,3 @@
-# Step 4: Load both the original and malicious models to demonstrate behavior
-
 import torch
 
 def load_models():

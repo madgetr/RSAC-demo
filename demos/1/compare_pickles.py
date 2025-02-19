@@ -1,6 +1,5 @@
 import pickle
 
-
 good_pickle = pickle.load(open("good_pickle.pkl", "rb"))
 print("Good pickle:", good_pickle)
 bad_pickle = pickle.load(open("bad_pickle.pkl", "rb"))

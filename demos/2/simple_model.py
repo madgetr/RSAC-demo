@@ -1,5 +1,4 @@
 import torch
-import torch.nn as nn
 
 class SimpleModel(torch.nn.Module):
 
