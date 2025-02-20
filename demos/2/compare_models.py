@@ -1,4 +1,6 @@
 import torch
+from simple_model import SimpleModel
+SimpleModel()
 
 def load_models():
     # Load the original (simple) model

