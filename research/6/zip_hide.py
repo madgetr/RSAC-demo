@@ -1,7 +1,6 @@
 import zipFile
 
 zip_file = "malicious_model.pth"
-import shutil
 
 temp_zip = "temp.pth"
 

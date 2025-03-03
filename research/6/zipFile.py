@@ -4,7 +4,6 @@ Read and write ZIP files.
 XXX references to utf-8 need further investigation.
 """
 import binascii
-import copy
 import importlib.util
 import io
 import itertools
@@ -447,7 +446,9 @@ class ZipInfo (object):
 
         self.extract_version = max(min_version, self.extract_version)
         self.create_version = max(min_version, self.create_version)
+
         filename, flag_bits = self._encodeFilenameFlags()
+
         header = struct.pack(structFileHeader, stringFileHeader,
                              self.extract_version, self.reserved, flag_bits,
                              self.compress_type, dostime, dosdate, CRC,
@@ -1183,9 +1184,7 @@ class _ZipWriteFile(io.BufferedIOBase):
                 self._fileobj.seek(self._zipfile.start_dir)
 
             # Successfully written: Add file to our caches
-
             self._zipfile.filelist.append(self._zinfo)
-
             self._zipfile.NameToInfo[self._zinfo.filename] = self._zinfo
         finally:
             self._zipfile._writing = False
@@ -1558,11 +1557,12 @@ class ZipFile:
                 fname_str = fname.decode("cp437")
 
             if fname_str != zinfo.orig_filename:
-                print(
+                raise BadZipFile(
                     'File name in directory %r and header %r differ.'
                     % (zinfo.orig_filename, fname))
 
             # check for encrypted flag & handle password
+
             is_encrypted = zinfo.flag_bits & 0x1
             if is_encrypted:
                 if not pwd:
@@ -1593,7 +1593,6 @@ class ZipFile:
         zinfo.compress_size = 0
         zinfo.CRC = 0
 
-        zinfo.flag_bits = 0x00
         if zinfo.compress_type == ZIP_LZMA:
             # Compressed data includes an end-of-stream (EOS) marker
             zinfo.flag_bits |= 0x02
@@ -1815,8 +1814,6 @@ class ZipFile:
             zinfo._compresslevel = compresslevel
 
         zinfo.file_size = len(data)            # Uncompressed size
-        if zinfo.filename.endswith('data.pkl'):
-            print(zinfo)
         with self._lock:
             with self.open(zinfo, mode='w') as dest:
                 dest.write(data)
@@ -1897,8 +1894,6 @@ class ZipFile:
                                   0, zinfo.internal_attr, zinfo.external_attr,
                                   header_offset)
             self.fp.write(centdir)
-            if filename.endswith(b'.pkl'):
-                filename = filename.decode('utf-8').replace('.pkl','.mal').encode('utf-8')
             self.fp.write(filename)
             self.fp.write(extra_data)
             self.fp.write(zinfo.comment)
