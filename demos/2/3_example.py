@@ -19,12 +19,12 @@ class SimpleModel(torch.nn.Module):
 
 def load_models():
     # Load the original (simple) model
-    model = torch.load("simple_model.pth")
+    model = torch.load("simple_model.pth", weights_only=False)
     print("Original Model:")
     print(model)
 
     # Load the infected model (this will trigger the system call)
-    infected_model = torch.load("infected_model.pth")
+    infected_model = torch.load("infected_model.pth", weights_only=False)
     print("infected Model:")
     print(infected_model)
 

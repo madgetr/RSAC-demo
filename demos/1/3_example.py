@@ -35,9 +35,6 @@ student = Student("John", 30, [Course("Math"), Course("Science")], [friend])
 with open("student_pickle.pkl", "wb") as f:
     pickle.dump(student, f)
 
-# Does not work out of the box
-# with open("student_json.json", "w") as f:
-#     json.dump(student, f)
 
 with open("student_pickle.pkl", "rb") as f:
     student_from_pickle = pickle.load(f)
