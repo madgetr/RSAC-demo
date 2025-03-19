@@ -1,5 +1,5 @@
-import json
 import pickle
+import pickletools
 
 
 class Course:
@@ -11,6 +11,7 @@ class Course:
 
     def __eq__(self, other):
         return self.name == other.name
+
 
 class Student:
     def __init__(self, name, age, courses=None, friends=None):
@@ -25,6 +26,7 @@ class Student:
     def __eq__(self, other):
         return self.name == other.name and self.age == other.age and self.courses == other.courses
 
+
 friend = Student("Alice", 25, [Course("English")])
 student = Student("John", 30, [Course("Math"), Course("Science")], [friend])
 
@@ -38,6 +40,8 @@ with open("student_pickle.pkl", "wb") as f:
 with open("student_pickle.pkl", "rb") as f:
     student_from_pickle = pickle.load(f)
 
-
 print("Student from pickle:", student_from_pickle)
 print("Student == Student from pickle:", student == student_from_pickle)
+
+input("Press Enter to disassemble the pickle file")
+pickletools.dis(open("student_pickle.pkl", "rb").read())

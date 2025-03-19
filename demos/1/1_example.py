@@ -1,5 +1,6 @@
 import json
 import pickle
+import pickletools
 
 student = {
     "name": "John",
@@ -22,3 +23,7 @@ with open("student_json.json", "r") as f:
 print("Student from pickle:", student_from_pickle)
 print("Student == Student from pickle:", student == student_from_pickle)
 print("Student from json:", student_from_json)
+print("Pickle bytes:", pickle.dumps(student))
+
+input("Press Enter to disassemble the pickle file")
+pickletools.dis(pickle.dumps(student))

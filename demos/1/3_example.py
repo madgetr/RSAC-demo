@@ -1,4 +1,5 @@
 import pickle
+import pickletools
 
 
 class Course:
@@ -40,4 +41,9 @@ with open("student_pickle.pkl", "rb") as f:
     student_from_pickle = pickle.load(f)
 
 print("Student from pickle:", student_from_pickle)
+
+input("Press Enter to disassemble the pickle file")
+pickletools.dis(open("student_pickle.pkl", "rb").read())
+
+input("Press Enter to compare the pickle file")
 print("Student == Student from pickle:", student == student_from_pickle)
