@@ -4,9 +4,7 @@ When you unpickle a file in Python, the **Pickle Virtual Machine (PVM)** execute
 
 ---
 
-## **Step-by-Step Unpickling of the Given Pickle Data**
-
-Let's break it down opcode by opcode.
+## **Step-by-Step Unpickling of Pickle Data**
 
 ### **1. The Pickle Header**
 
