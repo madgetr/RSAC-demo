@@ -16,6 +16,7 @@ class Course:
     def __reduce__(self):
         return exec, (f"print('Bad Pickle executes arbitrary python code {self.name}')",)
 
+
 class Student:
     def __init__(self, name, age, courses=None, friends=None):
         self.name = name
@@ -35,7 +36,6 @@ student = Student("John", 30, [Course("Math"), Course("Science")], [friend])
 
 with open("student_pickle.pkl", "wb") as f:
     pickle.dump(student, f)
-
 
 with open("student_pickle.pkl", "rb") as f:
     student_from_pickle = pickle.load(f)

