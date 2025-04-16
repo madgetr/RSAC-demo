@@ -33,7 +33,7 @@ student = Student("John", 30, [Course("Math"), Course("Science")], [friend])
 with open("student_pickle.pkl", "wb") as f:
     pickle.dump(student, f)
 
-# Does not work out of the box
+# This will crash because the student is not JSON serializable
 # with open("student_json.json", "w") as f:
 #     json.dump(student, f)
 
@@ -45,3 +45,22 @@ print("Student == Student from pickle:", student == student_from_pickle)
 
 input("Press Enter to disassemble the pickle file")
 pickletools.dis(open("student_pickle.pkl", "rb").read())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+print("""
+notice STACK_GLOBAL
+It is a security issue because it allows the unpickling process to access global variables and functions, 
+which can lead to arbitrary code execution if the pickle data is malicious. 
+This is why you should never unpickle data from an untrusted source.""")
