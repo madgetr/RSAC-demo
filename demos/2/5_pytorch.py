@@ -20,4 +20,6 @@ class SimpleModel(torch.nn.Module):
 simple_model = SimpleModel()
 torch.save(simple_model, "simple_model.pth")
 
+input("Press Enter to load the model")
+
 print(torch.load("simple_model.pth", weights_only=False))

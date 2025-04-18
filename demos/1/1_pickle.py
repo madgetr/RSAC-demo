@@ -20,6 +20,9 @@ with open("student_pickle.pkl", "rb") as f:
 with open("student_json.json", "r") as f:
     student_from_json = json.load(f)
 
+print("Student Saved to pickle")
+input()
+
 print("Student from pickle:", student_from_pickle)
 print("Student == Student from pickle:", student == student_from_pickle)
 print("Student from json:", student_from_json)
