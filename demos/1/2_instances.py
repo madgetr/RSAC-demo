@@ -48,19 +48,6 @@ print("Student == Student from pickle:", student == student_from_pickle)
 input("Press Enter to disassemble the pickle file")
 pickletools.dis(open("student_pickle.pkl", "rb").read())
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 print("""
 notice STACK_GLOBAL
 It is a security issue because it allows the unpickling process to access global variables and functions, 
